@@ -386,11 +386,13 @@ class Project extends AbstractModel
     }
 
     /**
+     * @param array $params
+     *
      * @return Branch[]
      */
-    public function branches()
+    public function branches(array $params = [])
     {
-        $data = $this->client->repositories()->branches($this->id);
+        $data = $this->client->repositories()->branches($this->id, $params);
 
         $branches = array();
         foreach ($data as $branch) {
