@@ -724,9 +724,9 @@ class Project extends AbstractModel
      * @param string $description
      * @return MergeRequest
      */
-    public function createMergeRequest($source, $target, $title, $assignee = null, $description = null)
+    public function createMergeRequest($source, $target, $title, $assignee = null, $description = null, $params = [])
     {
-        $data = $this->client->mergeRequests()->create($this->id, $source, $target, $title, $assignee, $this->id, $description);
+        $data = $this->client->mergeRequests()->create($this->id, $source, $target, $title, $assignee, $this->id, $description, $params);
 
         return MergeRequest::fromArray($this->getClient(), $this, $data);
     }
