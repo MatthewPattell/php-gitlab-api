@@ -155,14 +155,12 @@ class MergeRequest extends AbstractModel implements Noteable
     }
 
     /**
-     * @param string $message
+     * @param array $params
      * @return MergeRequest
      */
-    public function merge($message = null)
+    public function merge($params = [])
     {
-        $data = $this->client->mergeRequests()->merge($this->project->id, $this->iid, array(
-            'merge_commit_message' => $message
-        ));
+        $data = $this->client->mergeRequests()->merge($this->project->id, $this->iid, $params);
 
         return static::fromArray($this->getClient(), $this->project, $data);
     }

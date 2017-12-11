@@ -767,13 +767,14 @@ class Project extends AbstractModel
 
     /**
      * @param int $id
+     * @param array $params
      * @return MergeRequest
      */
-    public function mergeMergeRequest($id)
+    public function mergeMergeRequest($id, $params = [])
     {
         $mr = new MergeRequest($this, $id, $this->getClient());
 
-        return $mr->merge();
+        return $mr->merge($params = []);
     }
 
     /**
